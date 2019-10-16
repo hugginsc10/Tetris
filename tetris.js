@@ -55,6 +55,12 @@ function createPiece(type) {
       [0, 0, 7],
       [0, 7, 7],
     ]
+  } else if (type === "C") {
+    return [
+      [8, 8, 0],
+      [8, 0, 0],
+      [8, 8, 0],
+    ]
   }
 }
 // const collide = (arena, player) => {
@@ -164,7 +170,8 @@ const colors = [
   "blue",
   "orange",
   "lightgreen",
-  "white"
+  "white",
+  "lightblue"
 ]
 function playerRotate(dir) {
   const pos = player.pos.x;
@@ -188,7 +195,7 @@ function  playerMove(dir) {
   }
 }
 function playerReset() {
-  const pieces = "ILJOTSZ"
+  const pieces = "ILJOTSZC"
   player.matrix = createPiece(pieces[pieces.length * Math.random() | 0])
   player.pos.y = 0;
   player.pos.x = (arena[0].length / 2 | 0) - (player.matrix[0].length / 2 | 0);
