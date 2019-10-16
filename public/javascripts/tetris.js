@@ -34,7 +34,7 @@ createMatrix = (width, height) => {
   document.getElementById('score').innerText = player.score;
 }
 
- createPiece = (type) => {
+ createTetromino = (type) => {
   if (type === "T") {
     return [
       [0, 0, 0],
@@ -221,7 +221,7 @@ const colors = [
 }
  playerReset = () => {
   const pieces = "ILJOTSZC"
-  player.matrix = createPiece(pieces[pieces.length * Math.random() | 0])
+  player.matrix = createTetromino(pieces[pieces.length * Math.random() | 0])
   player.pos.y = 0;
   player.pos.x = (arena[0].length / 2 | 0) - (player.matrix[0].length / 2 | 0);
   if (collide(arena, player)) {
