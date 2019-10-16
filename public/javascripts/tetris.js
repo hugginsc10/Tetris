@@ -129,6 +129,7 @@ const arena = createMatrix(arenaCols, arenaRows);
   matrix.forEach((row, y) => {
     row.forEach((value, x) => {
       if (value !== 0) {
+        context.strokeStyle = "black"
         context.fillStyle = colors[value]
         context.fillRect(x + offset.x, y + offset.y, 1, 1);
       }
@@ -139,6 +140,7 @@ const arena = createMatrix(arenaCols, arenaRows);
 
  draw = () => {
   context.fillStyle = "#000";
+  context.strokeStyle = "black";
   context.fillRect(0, 0, canvas.width, canvas.height);
 
   drawMatrix(arena, { x: 0, y: 0 })
