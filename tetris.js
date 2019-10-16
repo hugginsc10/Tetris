@@ -1,3 +1,10 @@
+
+
+
+
+class TetrisGame {
+  constructor() {
+
 const canvas = document.getElementById('tetris');
 const context = canvas.getContext('2d');
 
@@ -5,7 +12,7 @@ context.scale(20, 20);
 
 
 
-function createMatrix(width, height) {
+createMatrix = (width, height) => {
   const matrix = [];
   while (height--) {
     matrix.push(new Array(width).fill(0))
@@ -13,7 +20,7 @@ function createMatrix(width, height) {
   return matrix
 };
 
-function createTetris() {
+ createTetris = () => {
    let rowCount = 1;
     outer: for (let y = arena.length -1; y > 0; y--)  {
     for (let x = 0; x < arena[y].length; x++) {
@@ -29,11 +36,11 @@ function createTetris() {
 
   }
 }
-function updateScore() {
+ updateScore = () =>{
   document.getElementById('score').innerText = player.score;
 }
 
-function createPiece(type) {
+ createPiece = (type) => {
   if (type === "T") {
     return [
       [0, 0, 0],
@@ -103,7 +110,7 @@ function createPiece(type) {
 //   return false;
 // };
 
-function collide(arena, player) {
+ collide = (arena, player) => {
   const m = player.matrix;
   const o = player.pos;
   for (let y = 0; y < m.length; ++y) {
@@ -124,7 +131,7 @@ const arenaRows = 20;
 const arena = createMatrix(arenaCols, arenaRows);
 
 
-function drawMatrix(matrix, offset) {
+ drawMatrix = (matrix, offset) => {
   matrix.forEach((row, y) => {
     row.forEach((value, x) => {
       if (value !== 0) {
@@ -136,14 +143,14 @@ function drawMatrix(matrix, offset) {
   })
 };
 
-function draw() {
+ draw = () => {
   context.fillStyle = "#000";
   context.fillRect(0, 0, canvas.width, canvas.height);
 
   drawMatrix(arena, { x: 0, y: 0 })
   drawMatrix(player.matrix, player.pos);
 };
-function merge(arena, player) {
+ merge = (arena, player) => {
   player.matrix.forEach((row, y) => {
     row.forEach((value, x) => {
       if (value !== 0) {
@@ -153,7 +160,7 @@ function merge(arena, player) {
     })
   }
 
-function playerDrop() {
+ playerDrop = () => {
   player.pos.y++;
   if (collide(arena, player)) {
     player.pos.y--;
@@ -164,7 +171,7 @@ function playerDrop() {
   }
   dropCounter = 0;
 }
-function rotate( matrix, dir ) {
+ rotate = ( matrix, dir ) => {
   for  (let y = 0; y < matrix.length; y++) {
     for (let x = 0; x < y; x++) {
       [
@@ -195,7 +202,7 @@ const colors = [
   "white",
   "lightblue"
 ]
-function playerRotate(dir) {
+ playerRotate = (dir) => {
   const pos = player.pos.x;
   let offset = 1;
 
@@ -210,13 +217,13 @@ function playerRotate(dir) {
     }
   }
 }
-function  playerMove(dir) { 
+  playerMove = (dir) => { 
   player.pos.x += dir;
   if (collide(arena, player)) {
     player.pos.x -= dir;
   }
 }
-function playerReset() {
+ playerReset = () => {
   const pieces = "ILJOTSZC"
   player.matrix = createPiece(pieces[pieces.length * Math.random() | 0])
   player.pos.y = 0;
@@ -232,7 +239,7 @@ let dropCounter  = 0;
 let dropInterval = 1000
 let lastTime = 0;
 
-function update(time = 0) { 
+ update = (time = 0) => { 
   const deltaTime = time - lastTime;
   
   dropCounter += deltaTime;
@@ -266,3 +273,5 @@ const player = {
 playerReset();
 updateScore();
 update();
+ }
+};
