@@ -5,6 +5,7 @@ body {
 canvas {
   border: solid.2em white;
   height: 85vh;
+  background-color: black;
 }
 #score {
   font-size:  36px;
