@@ -73,12 +73,19 @@ function merge(arena, player) {
 
 function playerDrop() {
   player.pos.y++;
-  if (collides(arena, player)) {
+  if (collide(arena, player)) {
     player.pos.y--;
     merge(arena, player);
     player.pos.y = 0
   }
   dropCounter = 0;
+}
+
+function  playerMove(dir) { 
+  player.pos.x += dir;
+  if (collide(arena, player)) {
+    player.pos.x -= dir;
+  }
 }
 
 let dropCounter  = 0;
@@ -99,9 +106,9 @@ function update(time = 0) {
 }
 document.addEventListener('keydown', event => {
   if (event.keyCode === 37) {
-    player.pos.x--;
+    playerMove(-1);
   }  else if (event.keyCode === 39) {
-    player.pos.x++;
+    playerMove(1);
   } else if (event.keyCode === 40) {
     playerDrop();
   } 
