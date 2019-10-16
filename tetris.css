@@ -4,10 +4,13 @@ body {
 }
 canvas {
   border: solid.2em white;
-  height: 85vh;
+  height: 75vh;
   background-color: black;
+  margin-top: 5vh;
 }
 #score {
   font-size:  36px;
   color: white;
+  margin-top: 5vh;
+  font-family: Arial, Helvetica, sans-serif;
 }
