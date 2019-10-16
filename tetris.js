@@ -12,17 +12,24 @@ const matrix = [
   [0,1,0],
 ];
 
-function collides(arena, player) {
-  const[m, o] = [player.matrix, player.pos];
+const collide = (arena, player) => {
+  const [m, o] = [player.matrix, player.pos];
   for (let y = 0; y < m.length; ++y) {
     for (let x = 0; x < m[y].length; ++x) {
-      if (m[y][x] !== 0 && arena[y + o.y] && arena[y+o.y][x +o.x]!==0)  {
+      const outOfBounds = y + o.y >= arenaRows || x + o.x >= arenaCols;
+      if (m[y][x] === 0) {
+        continue;
+      }
+      else if (outOfBounds || arena[y + o.y][x + o.x] !== 0) {
         return true;
+      }
+      else {
+        continue;
       }
     }
   }
   return false;
-}
+};
 
 function createMatrix(width, height) {
   const matrix = [];
@@ -30,9 +37,10 @@ function createMatrix(width, height) {
     matrix.push(new Array(width).fill(0))
   }
   return matrix
-}
-
-const arena = createMatrix(12, 20);
+};
+const arenaCols = 12;
+const arenaRows = 20;
+const arena = createMatrix(arenaCols, arenaRows);
 
 function drawMatrix(matrix, offset) {
   matrix.forEach((row, y) => {
