@@ -12,10 +12,18 @@
 <body>
   <div id="score"></div>
   <canvas id="tetris" width="240" height="400"></canvas>
-  <div id="instructions">
-    
-  </div>
   <script src="./javascripts/tetris.js"></script>
+  <div id="player-buttons">
+  <button id="left-button" onclick="playerMove(-1)">Left</button>
+  <button id="right-button" onclick="playerMove(1)">Right</button>
+  <button id="rotate-button" onclick="playerRotate(1)">Rotate</button>
+  <button id="drop-button" onclick="playerDrop()">Drop</button>
+  </div>
+  <br>
+  <div id="instructions">
+    <button id='start-button' onclick="startGame()">Start Game</button>
+
+  </div>
 </body>
 
 </html>
