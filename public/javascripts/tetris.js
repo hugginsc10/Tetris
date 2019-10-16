@@ -260,19 +260,24 @@ document.addEventListener('keydown', event => {
     playerRotate(1);
   }
 });
-// document.addEventListener("click", e => {
-//   if (document.getElementById('left-button')) {
-//     playerMove(-1);
-//   } else if (document.getElementById('right-button')) {
-//     playerMove(1);
-//   } else if (document.getElementById('drop-button')) {
-//     playerDrop();
-//   } else if (document.getElementById('rotate-button')) {
-//     playerRotate(1);
-//   } else if (document.getElementById('start-button')) {
-//     startGame()
-//   }
-// });
+
+sound = (src) => {
+  this.sound = document.createElement("audio");
+  this.sound.src = src;
+  this.sound.setAttribute("preload", "auto");
+  this.sound.setAttribute("controls", "none");
+  this.sound.style.display = "none";
+  document.body.appendChild(this.sound);
+  this.play = function () {
+    this.sound.play();
+  }
+  this.stop = function () {
+    this.sound.pause();
+  }
+  
+}
+
+
 const player = {
   pos: { x: 0, y: 0 },
   matrix: null,
@@ -280,25 +285,8 @@ const player = {
 }
 
 startGame = () => {
-playerReset();
-updateScore();
-update();
+  playerReset();
+  updateScore();
+  update();
 }
-// window.addEventListener('click', e => {
-//   if (document.getElementById("left-button")) {
-//     playerMove(-1)
-//   } else if (document.getElementById("right-button")) {
-//    playerMove(1);
-//   } else if (document.getElementById("rotate-button")) {
-//     playerRotate(1);
-//   } else if (document.getElementById("drop-button")) {
-//     playerDrop();
-//   } else if (document.getElementById('start-button')) {
-//     startGame();
-//   }
-  // document.getElementById("left-button").onClick(playerMove(-1));
-  // document.getElementById("right-button").onClick(playerMove(1));
-  // document.getElementById("rotate-button").onClick(playerRotate(1));
-  // document.getElementById("drop-button").onClick(playerDrop());
-  // document.getElementById('start-button').onClick(startGame());
 

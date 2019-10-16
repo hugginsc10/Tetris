@@ -6,11 +6,11 @@ canvas {
   border: solid.2em white;
   height: 75vh;
   background-color: black;
-  margin-top: 5vh;
+  margin-top: 3vh;
 }
 #score {
   font-size:  36px;
   color: white;
-  margin-top: 5vh;
+  margin-top: 4vh;
   font-family: Arial, Helvetica, sans-serif;
 }
