@@ -31,7 +31,7 @@ createMatrix = (width, height) => {
   }
 }
  updateScore = () =>{
-  document.getElementById('score').innerText = `"Score " + ${player.score}`;
+  document.getElementById('score').innerText = `Score ${player.score}`;
 }
 
  createTetromino = (type) => {
