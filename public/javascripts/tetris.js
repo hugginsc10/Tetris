@@ -5,7 +5,8 @@ const context = canvas.getContext('2d');
 context.scale(20, 20);
 
 
-
+DROP_INTERVAL_SLOW = 1000
+DROP_INTERVAL_FAST = 50
 createMatrix = (width, height) => {
   const matrix = [];
   while (height--) {
@@ -232,13 +233,13 @@ const colors = [
 }
 
 let dropCounter  = 0;
-let dropInterval = 1000
+let dropInterval = DROP_INTERVAL_SLOW;
 let lastTime = 0;
 
  update = (time = 0) => { 
-  const deltaTime = time - lastTime;
+  const delta = time - lastTime;
   
-  dropCounter += deltaTime;
+  dropCounter += delta;
 
   if (dropCounter  > dropInterval){ 
     playerDrop();
@@ -256,7 +257,7 @@ document.addEventListener('keydown', event => {
     playerDrop();
   } else if (event.keyCode === 81) {
     playerRotate(-1);
-  } else  if (event.keyCode === 32) {
+  } else  if (event.keyCode === 38) {
     playerRotate(1);
   }
 });
@@ -274,7 +275,6 @@ sound = (src) => {
   this.stop = function () {
     this.sound.pause();
   }
-  
 }
 
 
@@ -284,7 +284,7 @@ const player = {
   score: 0
 }
 
-startGame = () => {
+const startGame = () => {
   playerReset();
   updateScore();
   update();

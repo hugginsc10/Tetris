@@ -4,26 +4,43 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
   <title>Tetris</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="tetris.css">
+  <script src="./javascripts/tetris.js"></script>
 </head>
 
 <body>
-  <div id="score"></div>
-  <canvas id="tetris" width="240" height="400"></canvas>
-  <script src="./javascripts/tetris.js"></script>
-  <div id="player-buttons">
-  <button id="left-button" onclick="playerMove(-1)">Left</button>
-  <button id="rotate-button" onclick="playerRotate(1)">Rotate</button>
-  <button id="right-button" onclick="playerMove(1)">Right</button>
-  <br>
-  <button id="drop-button" onclick="playerDrop()">Drop</button>
+  <div class="canvas-button-containter">
+      <div class="canvas-container">
+        <div id="score"></div>
+        <canvas id="tetris" width="240" height="400"></canvas>
+      </div>
+      <div id="player-buttons">
+        <button id="left-button" onclick="playerMove(-1)">Left</button>
+        <button id="rotate-button" onclick="playerRotate(1)">Rotate</button>
+        <button id="right-button" onclick="playerMove(1)">Right</button>
+        <br>
+        <button id="drop-button" onclick="playerDrop()">Drop</button>
+      </div>
+      <br>
   </div>
-  <br>
+  
   <div id="instructions">
     <button id='start-button' onclick="startGame()">Start Game</button>
-
+    <div class="arrowkeys-img" src="./arrow_keys.png">
+      <h4 id="left">Move Left</h4>
+      <h4 id="right">Move Right</h4>
+      <h4 id="rotate">Rotate</h4>
+      <h4 id="drop">Drop</h4>
+    </div>
   </div>
 </body>
 
