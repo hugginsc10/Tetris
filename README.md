@@ -19,4 +19,5 @@ Check it out here: [Tetris](https://spacetetris.herokuapp.com/)
   - Node
   - SASS
   - Webpack
+  - Canvas
 
